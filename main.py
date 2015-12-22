@@ -44,6 +44,7 @@ def process_search(search=None, folder=None):
 
 def download_url(url, local_filename):
 
+            # Have I already gotten the url
             try:
                 r = requests.get(url, stream=True)
 
@@ -52,6 +53,8 @@ def download_url(url, local_filename):
                     if chunk: # filter out keep-alive new chunks
                         f.write(chunk)
                 f.close()
+
+
             except requests.exceptions.SSLError, e:
                 print("SSL Error for", url)
             except requests.exceptions.InvalidSchema, e:
