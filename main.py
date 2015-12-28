@@ -36,7 +36,7 @@ def process_search(search=None, folder=None):
             local_filename = folder + "/" + uuid.uuid4().__str__().split('-')[4] + '_' + url.split('/')[-1].split('?')[0]
 
             print(url, local_filename)
-            download_url.delay(url, local_filename)
+            download_url(url, local_filename)
 
     except HTTPError, e:
         print("HTTP Error Occurred: ", e)
